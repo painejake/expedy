@@ -12,6 +12,7 @@ try {
 
     require('bootstrap');
     require('popper.js');
+    require('chart.js');
 
 } catch (e) {}
 
