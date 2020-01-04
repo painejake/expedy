@@ -1,11 +1,10 @@
 # Expedy
 
-![Build Status](https://api.travis-ci.org/painejake/expedy.svg "Build Status")
-
+[![Build Status](https://travis-ci.org/painejake/expedy.svg?branch=master)](https://travis-ci.org/painejake/expedy)
 
 ## About Expedy
 
-Expedy is an app written in PHP for tracking and reporting on expeditions and hikes or other ourdoor adventures.
+Expedy is an app written in PHP using the Laravel framework for tracking and reporting on expeditions and hikes or other ourdoor adventures.
 
 
 ## License
