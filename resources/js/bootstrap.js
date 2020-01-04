@@ -11,6 +11,10 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('chartist');
+    require('linearicons');
+    require('easy-pie-chart');
+
 } catch (e) {}
 
 /**
