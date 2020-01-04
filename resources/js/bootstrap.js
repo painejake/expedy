@@ -11,9 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('chartist');
-    require('linearicons');
-    require('easy-pie-chart');
+    require('popper.js');
 
 } catch (e) {}
 
