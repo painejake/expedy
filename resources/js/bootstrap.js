@@ -13,6 +13,8 @@ try {
     require('bootstrap');
     require('popper.js');
     require('chart.js');
+    require('offcanvas');
+    require('datatables.net-bs4');
 
 } catch (e) {}
 

@@ -31,6 +31,12 @@ const app = new Vue({
     el: '#app',
 });
 
+$('[data-toggle="offcanvas"]').on('click', function () {
+    $('.offcanvas-collapse').toggleClass('open')
+});
+
+$('#latest-expeditions').DataTable();
+
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',

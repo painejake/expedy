@@ -6,17 +6,17 @@
 
     <form class="auth-form" method="POST" action="{{ route('password.email') }}">
 
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
         @csrf
 
         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
 
         <h1 class="h3 mb-3 font-weight-normal">{{ __('What was it again?') }}</h1>
+
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
         <p>Enter the email address associated with your account.</p>
 
@@ -35,8 +35,8 @@
 
         <div class="form-row mt-3">
 
-            <button class="btn btn-lg btn-primary btn-block " type="submit">
-                {{ __('Send Password Reset Link') }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                {{ __('Send Password Reset') }}
             </button>
         </div>
 

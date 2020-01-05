@@ -45,11 +45,13 @@
             {{ __('Sign in') }}
         </button>
 
-        @if (Route::has('password.request'))
-            <a class="btn btn-link mt-2" href="{{ route('password.request') }}">
-                {{ __('Forgot Your Password?') }}
-            </a>
-        @endif
+        <div class="form-row">
+            @if (Route::has('password.request'))
+                <a class="mt-2 mx-auto" href="{{ route('password.request') }}">
+                    {{ __('Forgot Your Password?') }}
+                </a>
+            @endif
+        </div>
 
     </form>
 
