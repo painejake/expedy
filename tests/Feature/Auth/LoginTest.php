@@ -39,7 +39,7 @@ class LoginTest extends TestCase
 
         $response = $this->actingAs($user)->get('/login');
         
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/dashboard');
     }
 
     /**
@@ -107,7 +107,7 @@ class LoginTest extends TestCase
             'remember' => 'on',
         ]);
         
-        $response->assertRedirect('/dashbaord');
+        $response->assertRedirect('/dashboard');
 
         $response->assertCookie(\Auth::guard()->getRecallerName(), vsprintf('%s|%s|%s', [
             $user->id,
