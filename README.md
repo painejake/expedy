@@ -9,7 +9,7 @@
 
 ## About Expedy
 
-Expedy is an app written in PHP using the Laravel framework for tracking and reporting on expeditions, hikes or other outdoor adventures.
+Expedy is an app written in PHP/JS using the Laravel framework and Vue.js for tracking and reporting on expeditions, hikes or other outdoor adventures.
 
 
 ## License
