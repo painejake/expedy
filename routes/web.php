@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+
+Route::get('/expeditions', 'ExpeditionController@index')->name('expeditions.index');
+
+Route::get('/routes', 'RouteController@index')->name('routes.index');
+Route::get('/routes/gpx_example', 'RouteController@gpxExample');
+
+Route::get('/settings', 'SettingController@index')->name('settings.index');
+Route::get('/settings/profile', 'SettingController@profile')->name('settings.profile');
+Route::get('/settings/export', 'SettingController@profile')->name('settings.export');

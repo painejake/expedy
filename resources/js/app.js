@@ -35,7 +35,9 @@ $('[data-toggle="offcanvas"]').on('click', function () {
     $('.offcanvas-collapse').toggleClass('open')
 });
 
-$('#latest-expeditions').DataTable();
+$('#latest-expeditions').DataTable({
+    responsive: true
+});
 
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {

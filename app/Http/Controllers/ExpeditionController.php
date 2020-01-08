@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ExpeditionController extends Controller
 {
 
     /**
@@ -18,13 +18,13 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the expedition listing screen.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('dashboard.index');
+        return view('expeditions.index');
     }
     
 }

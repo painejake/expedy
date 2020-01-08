@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+
+class RouteController extends Controller
 {
 
     /**
@@ -18,13 +19,21 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the routes listing screen.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('dashboard.index');
+        return view('routes.index');
     }
-    
+
+    public function gpxExample()
+    {
+        $gpx = new \phpGPX\phpGPX();
+        $file = $gpx->load(base_path('resources/testing/test.gpx'));
+
+        dd($file);
+    }
+
 }

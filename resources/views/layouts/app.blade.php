@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="/favicon.ico">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/offcanvas/">
+    <title>{{ config('app.name', 'Expedy') }}</title>
 
     <!-- Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,35 +18,40 @@
   <body class="bg-light">
 
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">{{ config('app.name', 'Laravel') }}</a>
+      <a class="navbar-brand" href="#">{{ config('app.name', 'Expedy') }}</a>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+
+          <li class="nav-item {{ request()->is('dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.index') }}">Dashboard</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Expeditions</a>
+
+          <li class="nav-item {{ request()->is('expeditions*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('expeditions.index') }}">Expeditions</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Routes</a>
+
+          <li class="nav-item {{ request()->is('routes*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('routes.index') }}">Routes</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+
+          <li class="nav-item dropdown {{ request()->is('settings*') ? 'active' : '' }}">
+            <a class="nav-link dropdown-toggle" href="{{ route('settings.index') }}" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Data Export</a>
+              <a class="dropdown-item" href="{{ route('settings.index') }}">Settings</a>
+              <a class="dropdown-item" href="{{ route('settings.profile') }}">Profile</a>
+              <a class="dropdown-item" href="{{ route('settings.export') }}">Data Export</a>
             </div>
           </li>
+
         </ul>
 
         <a class="btn btn-outline-info my-2 my-sm-0 text-white" href="{{ route('logout') }}"
           onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
+          document.getElementById('logout-form').submit();">
           {{ __('Logout') }}
         </a>
 
