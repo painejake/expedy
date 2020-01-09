@@ -56,7 +56,7 @@ class RouteController extends Controller
      * @return \Illuminate\Http\Response
      * @since 1.0.0
      */
-    public function createRoutes()
+    public function createRoute()
     {
         $user = Auth::user();
 

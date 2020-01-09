@@ -17,7 +17,7 @@ class CreateGpxRouteTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('route_id')->unsigned();
             $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade')->onUpdate('cascade');
-            $table->longText('gpx_data');
+            $table->text('gpx_file');
             $table->json('gpx_json');
             $table->timestamps();
             $table->softDeletes();

@@ -81,6 +81,7 @@
 
       <footer class="text-center mt-3 text-secondary">
         <p><a class="text-secondary" href="https://github.com/painejake/expedy">{{ config('app.name', 'Laravel') }}</a>, made with ❤️</p>
+        <small>Page rendered in {{ number_format((microtime(true) - LARAVEL_START), 4) }} seconds</small>
       </footer>
 
     </main>
