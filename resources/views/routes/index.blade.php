@@ -12,13 +12,9 @@
 
         <div class="panel-body">
             
-            <div class="row">
-
                 <!-- Display the routes -->
                 <all-routes></all-routes>
                 <!-- End Display -->
-
-            </div>
 
             <small class="d-block text-right mt-3">
                 <a href="#">What's this for?</a>

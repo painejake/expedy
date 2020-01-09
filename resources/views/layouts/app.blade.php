@@ -18,7 +18,7 @@
   <body class="bg-light">
 
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">{{ config('app.name', 'Expedy') }}</a>
+      <a class="navbar-brand" href="{{ route('dashboard.index') }}">{{ config('app.name', 'Expedy') }}</a>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -80,7 +80,7 @@
       @yield('content')
 
       <footer class="text-center mt-3 text-secondary">
-        <p><a class="text-secondary" href="https://github.com/painejake/expedy">{{ config('app.name', 'Laravel') }}</a>, made with ❤️</p>
+        <p class="mb-0"><small><a class="text-secondary" href="https://github.com/painejake/expedy">{{ config('app.name', 'Expedy') }}</a> made with ❤️</small></p>
         <small>Page rendered in {{ number_format((microtime(true) - LARAVEL_START), 4) }} seconds</small>
       </footer>
 
