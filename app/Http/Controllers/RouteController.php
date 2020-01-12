@@ -31,6 +31,16 @@ class RouteController extends Controller
     }
 
     /**
+     * Show the route create screen.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function create()
+    {
+        return view('routes.create');
+    }
+
+    /**
      * Fetch all the routes associated with a user and
      * return the json result.
      *

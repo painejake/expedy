@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,12 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/routes', 'RouteController@index')->name('routes.index');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'routes'], function () {
+    Route::get('create', 'RouteController@create')->name('routes.create');
+    Route::post('create', 'RouteController@create');
+
+    Route::get('gpx_example', 'RouteController@gpxExample');
+});
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/expeditions', 'ExpeditionController@index')->name('expeditions.index');
-
-Route::get('/routes', 'RouteController@index')->name('routes.index');
-Route::get('/routes/gpx_example', 'RouteController@gpxExample');
 
 Route::get('/settings', 'SettingController@index')->name('settings.index');
 Route::get('/settings/profile', 'SettingController@profile')->name('settings.profile');
