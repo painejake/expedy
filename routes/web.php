@@ -17,19 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/routes', 'RouteController@index')->name('routes.index');
-
-Route::group(['middleware' => 'auth', 'prefix' => 'routes'], function () {
-    Route::get('create', 'RouteController@create')->name('routes.create');
-    Route::post('create', 'RouteController@create');
-
-    Route::get('gpx_example', 'RouteController@gpxExample');
-});
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
+
+Route::get('/routes/create', 'RouteController@create')->name('routes.create');
+Route::post('/routes/create', 'RouteController@store');
+Route::get('/routes', 'RouteController@index')->name('routes.index');
+
+
 Route::get('/expeditions', 'ExpeditionController@index')->name('expeditions.index');
 
-Route::get('/settings', 'SettingController@index')->name('settings.index');
+
 Route::get('/settings/profile', 'SettingController@profile')->name('settings.profile');
 Route::get('/settings/export', 'SettingController@profile')->name('settings.export');
+Route::get('/settings', 'SettingController@index')->name('settings.index');

@@ -34,7 +34,33 @@ class RouteTest extends TestCase
 
         $response = $this->actingAs($user)->get('/routes');
 
-        $response->assertStatus(200);
+        $response->assertViewIs('routes.index');
+    }
+
+    /**
+     * Test an unauthorized user cannot view the route create screen.
+     *
+     * @return void
+     */
+    public function testAnonUserCannotViewRouteCreateScreen()
+    {
+        $response = $this->get('/routes/create');
+
+        $response->assertRedirect('/login');
+    }
+
+    /**
+     * Test a logged in user can view the route create screen.
+     *
+     * @return void
+     */
+    public function testUserCanViewRouteCreateScreen()
+    {
+        $user = factory(User::class)->make();
+
+        $response = $this->actingAs($user)->get('/routes/create');
+
+        $response->assertViewIs('routes.create');
     }
 
 }

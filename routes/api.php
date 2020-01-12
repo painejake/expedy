@@ -19,5 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth', 'prefix' => 'route'], function() {
     Route::get('get_all', 'RouteController@getAllRoutes');
-    Route::post('create_route', 'RouteController@createRoute');
 });

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GpxRoute extends Model
 {
-    protected $fillable = ['route_id', 'gpx_data', 'gpx_json'];
+    protected $fillable = ['route_id', 'gpx_file', 'gpx_json'];
 
     public function route()
     {

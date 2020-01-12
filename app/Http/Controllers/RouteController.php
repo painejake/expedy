@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Route;
+use App\GpxRoute;
 use Storage;
 use Auth;
 
@@ -41,6 +42,55 @@ class RouteController extends Controller
     }
 
     /**
+     * Creates a new route assigned to a user and returns
+     * the route data.
+     *
+     * @return \Illuminate\Http\Response
+     * @since 1.0.0
+     */
+    public function store(Request $request)
+    {
+        // Create the base route
+        $route = Route::create([
+            'user_id' => $request->user()->id,
+            'title' =>  $request->title,
+            'description' => $request->description,
+            'region' => '',
+            'country' => '',
+            'distance' => 0
+        ]);
+
+        // Upload the file
+        $gpx_path = $request->file('gpx_file')->store('uploads/routes/'. $request->user()->id);
+
+        // Parse the GPX file and store it as JSON
+        $gpx = new \phpGPX\phpGPX();
+        $gpx_data = $gpx->load(storage_path('app/' . $gpx_path));
+
+        if (isset($gpx_data->tracks[0]->stats)) {
+            Route::where('id', $route->id)->update([
+                'distance' => $gpx_data->tracks[0]->stats->distance
+            ]);
+        }
+
+        // Then create the GpxRoute
+        GpxRoute::create([
+            'route_id' => $route->id,
+            'gpx_file' => $gpx_path,
+            'gpx_json' => json_encode($gpx_data)
+        ]);
+
+        return redirect('/routes');
+    }
+
+    public function edit($id)
+    {
+        $route = Route::find($id);
+
+        return view('routes.edit', compact('route'));
+    }
+
+    /**
      * Fetch all the routes associated with a user and
      * return the json result.
      *
@@ -56,44 +106,6 @@ class RouteController extends Controller
         return response()->json([
             'error' => false,
             'data' => $routes
-        ]);
-    }
-
-    /**
-     * Creates a new route assigned to a user and returns
-     * the route data.
-     *
-     * @return \Illuminate\Http\Response
-     * @since 1.0.0
-     */
-    public function createRoute()
-    {
-        $user = Auth::user();
-
-        $title = $request->title;
-        $desc = $request->description;
-        $data = $request->data;
-
-        $route = Route::create([
-            'user_id' => $user->id,
-            'title' => $title,
-            'description' => $desc,
-        ]);
-
-        foreach ($data as $gpxFile) {
-            $gpxPath = Storage::disk('uploads')
-                ->put($user->id . '/gpx_upload/' . $route->id, $gpxFile);
-
-            GpxRoute::create([
-                'route_id' => $route->id,
-                'gpx_data' => $user->id . '/gpx_upload/' . $route->id,
-                'gpx_json' => $user->id . '/gpx_upload/' . $route->id
-            ]);
-        }
-
-        return response()->json([
-            'error' => false,
-            'data' => $route
         ]);
     }
     

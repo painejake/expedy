@@ -49,16 +49,4 @@ class User extends Authenticatable
         return $this->hasMany('App\Route');
     }
 
-    /**
-     * Relationship for gpx routes. Return the gpx routes
-     * associated with a user.
-     *
-     * @return \App\GpxRoute
-     * @since 1.0.0
-     */
-    public function gpxDatas()
-    {
-        return $this->hasMany('App\GpxRoute');
-    }
-
 }

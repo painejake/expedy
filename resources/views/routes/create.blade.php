@@ -12,12 +12,15 @@
 
     <div class="panel-body">
 
-        <form class="form-horizontal pt-3">
+    <form class="form-horizontal pt-3" method="post" action="{{ route('routes.create') }}" enctype="multipart/form-data">
+            
+            @csrf
+
             <fieldset>
 
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter route name">
+                    <label for="title">Name</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="nameHelp" placeholder="Enter route name" required>
                     <small id="routeName" class="form-text text-muted">This should be a unique and easily identifiable.</small>
                 </div>
 
